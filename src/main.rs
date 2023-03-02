@@ -4,7 +4,6 @@
 use rand::Rng;
 use std::time::Instant;
 use std::time::Duration;
-use criterion::{criterion_group, criterion_main, BatchSize, Criterion};
 
 /*---------------------
     helper function
