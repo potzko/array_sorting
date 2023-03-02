@@ -9,7 +9,7 @@ use std::time::Duration;
     helper function
 ---------------------*/
 
-fn generate_random_vec(n: usize) -> Vec<i64> {
+pub fn generate_random_vec(n: usize) -> Vec<i64> {
     //returns a vector of length n, filled with random ints
     let mut rng = rand::thread_rng();
     let mut vec = Vec::with_capacity(n);
@@ -19,7 +19,7 @@ fn generate_random_vec(n: usize) -> Vec<i64> {
     vec
 }
 
-fn generate_random_vec_small(n: usize) -> Vec<i64> {
+pub fn generate_random_vec_small(n: usize) -> Vec<i64> {
     //returns a vector of length n, filled with random ints
     let mut rng = rand::thread_rng();
     let mut vec = Vec::with_capacity(n);
@@ -42,7 +42,7 @@ fn compare_vecs(a: &Vec<i64>, b: &Vec<i64>) -> bool{
     return true
 }
 
-fn std_sort_wraper(arr: &[i64]) -> Vec<i64>{
+pub fn std_sort_wraper(arr: &[i64]) -> Vec<i64>{
     let mut ret = arr.to_vec();
     ret.sort();
     //ret.sort_unstable();
@@ -73,7 +73,7 @@ fn combine_sorted_vecs(a: &[i64], b: &[i64]) -> Vec<i64>{
     new_arr
 }
 
-fn merge_sort(arr: &[i64]) -> Vec<i64>{
+pub fn merge_sort(arr: &[i64]) -> Vec<i64>{
     //gets a vec, returns a sorted vec, uses merge sort algorithem
     if arr.len() <= 2{
         let mut ret_arr = Vec::from(arr);
@@ -127,7 +127,7 @@ fn merge_sort_inplace_recursive(arr: &mut [i64], tmp: &mut [i64]){
     combine_sorted_vecs_inplace(left_tmp,right_tmp,arr);
 }
 
-fn merge_sort_inplace_wraper(arr: &[i64]) -> Vec<i64>{
+pub fn merge_sort_inplace_wraper(arr: &[i64]) -> Vec<i64>{
     let mut ret: Vec<i64> = arr.to_vec();
     merge_sort_inplace(&mut ret);
     ret
@@ -142,7 +142,7 @@ fn get_nth_hex_digit(num: &i64, digit: u32) -> usize{
     ((num & (15 << digit*4)) >> digit*4).try_into().unwrap()
 }
 
-fn radix_sort(arr: &[i64]) -> Vec<i64>{
+pub fn radix_sort(arr: &[i64]) -> Vec<i64>{
     //gets a vec and returns a sorted vec using the radix sorting algorithem 
     let mut negatives = Vec::<i64>::new();
     let mut positives = Vec::<i64>::new();
@@ -193,7 +193,7 @@ fn get_nth_base256_digit(num: &i64, digit: u32) -> usize{
     ((num & (255 << digit*8)) >> digit*8).try_into().unwrap()
 }
 
-fn radix_sort_256(arr: &[i64]) -> Vec<i64>{
+pub fn radix_sort_256(arr: &[i64]) -> Vec<i64>{
     //gets a vec and returns a sorted vec using the radix sorting algorithem 
     let mut negatives = Vec::<i64>::new();
     let mut positives = Vec::<i64>::new();
@@ -292,7 +292,7 @@ fn quick_sort_inplace(arr: &mut [i64]){
     quick_sort_inplace(&mut arr[pivot_index+1..]);
 }
 
-fn quick_sort_inplace_wrapper(arr: &[i64]) -> Vec<i64>{
+pub fn quick_sort_inplace_wrapper(arr: &[i64]) -> Vec<i64>{
     let mut ret: Vec<i64> = arr.to_vec();
     quick_sort_inplace(&mut ret);
     ret
@@ -301,7 +301,7 @@ fn quick_sort_inplace_wrapper(arr: &[i64]) -> Vec<i64>{
 /*---------------------
     heap sorts
 ---------------------*/
-fn heap_sort_inplace_wrapper(arr: &[i64]) -> Vec<i64>{
+pub fn heap_sort_inplace_wrapper(arr: &[i64]) -> Vec<i64>{
     let mut ret: Vec<i64> = arr.to_vec();
     heap_sort_inplace(&mut ret);
     ret
@@ -356,7 +356,7 @@ fn shell_sort(arr: &mut [i64]){
     }
 }
 
-fn shell_sort_wrapper(arr: &[i64]) -> Vec<i64>{
+pub fn shell_sort_wrapper(arr: &[i64]) -> Vec<i64>{
     let mut tmp = arr.to_vec();
     shell_sort(&mut tmp);
     tmp
@@ -381,7 +381,7 @@ fn shell_sort_knuth(arr: &mut [i64]){
     }
 }
 
-fn shell_sort_knuth_wrapper(arr: &[i64]) -> Vec<i64>{
+pub fn shell_sort_knuth_wrapper(arr: &[i64]) -> Vec<i64>{
     let mut tmp = arr.to_vec();
     shell_sort_knuth(&mut tmp);
     tmp
@@ -391,7 +391,7 @@ fn shell_sort_knuth_wrapper(arr: &[i64]) -> Vec<i64>{
     bubbble sort
 ---------------------*/
 
-fn bubble_sort(arr: &[i64]) -> Vec<i64>{
+pub fn bubble_sort(arr: &[i64]) -> Vec<i64>{
     let mut arr = Vec::from(arr);
     for _ in 0..arr.len(){
         for i in 1..arr.len(){
@@ -407,7 +407,7 @@ fn bubble_sort(arr: &[i64]) -> Vec<i64>{
     insertion sort
 ---------------------*/
 
-fn insertion_sort(arr: &[i64]) -> Vec<i64>{
+pub fn insertion_sort(arr: &[i64]) -> Vec<i64>{
     let mut arr = Vec::from(arr);
     for index in 1..arr.len(){
         for i in (1..=index).rev(){
@@ -540,8 +540,4 @@ fn test_sorts2(do_slow_sorts: bool)
         }
         println!{"took in total: {:?}", total_over_algorithem};
     }
-}
-
-fn main(){
-    
 }

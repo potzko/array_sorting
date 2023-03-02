@@ -1,4 +1,8 @@
+use array_sorting::{generate_random_vec, merge_sort, std_sort_wraper};
+use criterion::BatchSize;
 use criterion::Criterion;
+use criterion::criterion_group;
+use criterion::criterion_main;
 
 fn bench_sorts(c: &mut Criterion) {
     let mut group = c.benchmark_group("Sorts");
