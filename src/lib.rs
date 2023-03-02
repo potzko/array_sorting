@@ -239,7 +239,7 @@ fn radix_sort_256_recursive(arr: &[i64], digit: u32) -> Vec<i64>{
     quick sorts
 ---------------------*/
 
-fn quick_sort(arr: &[i64]) -> Vec<i64>{
+pub fn quick_sort(arr: &[i64]) -> Vec<i64>{
     if arr.len() <= 1{
         return  Vec::from(arr);
     }
