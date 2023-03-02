@@ -1,4 +1,3 @@
-use branch_tests::{merge_sort, std_sort_wraper, generate_random_vec};
 use criterion::Criterion;
 
 fn bench_sorts(c: &mut Criterion) {
