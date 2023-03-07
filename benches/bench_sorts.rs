@@ -8,7 +8,7 @@ use criterion::BenchmarkId;
 fn bench_sorts(c: &mut Criterion) {
     let mut group = c.benchmark_group("Sorts");
 
-    let sizes = [1_000_000,2_000_000,4_000_000,8_000_000];
+    let sizes: Vec<usize> = (0..=10_000_000).step_by(500_000).collect();
 
     for size in sizes.iter() {
         group.bench_with_input(BenchmarkId::new("Std sort", size), size, |b, &size| {

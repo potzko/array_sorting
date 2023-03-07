@@ -337,6 +337,39 @@ fn heapify(arr: &mut [i64], start: usize, end: usize) {
 }
 
 /*---------------------
+    potzko sort
+---------------------*/ 
+/*
+TODO make the sort lol
+fn combine_sorted_vecs_inplace_triangle(a: &[i64], b: &[i64], tmp: &mut [i64]){
+    let mut index_a = 0;
+    let mut index_b = b.len() - 1;
+    let mut index_c = 0;
+    while index_a < a.len(){
+        if a[index_a] < b[index_b]{
+            tmp[index_c] = a[index_a];
+            index_c += 1;
+            index_a += 1;
+        } else {
+            tmp[index_c] = b[index_b];
+            index_c += 1;
+            if index_b == 0 { break; }
+            index_b -= 1;
+        }
+    }
+    
+    match a.len() - index_a{
+        0 => for i in index_c..tmp.len(){
+            tmp[i] = b[index_b];
+            index_b -= 1;
+        },
+        _ => tmp[index_c..].copy_from_slice(&a[index_a..])
+    };
+}  
+
+*/
+
+/*---------------------
     shell sorts
 ---------------------*/ 
 
