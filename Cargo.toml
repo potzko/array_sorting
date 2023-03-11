@@ -12,3 +12,4 @@ criterion = "0.3"
 [[bench]]
 name = "bench_sorts"
 harness = false
+html_reports = true
