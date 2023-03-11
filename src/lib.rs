@@ -53,6 +53,8 @@ pub fn std_sort_wraper(arr: &[i64]) -> Vec<i64> {
 /*---------------------
     dist_sort
 ---------------------*/
+
+// basicly an insertion sort that uses buckets rather then the original array then reconstructs it
 fn binary_search_insert<T: Copy + Ord + PartialOrd + std::fmt::Debug>(arr: &mut Vec::<Vec<T>>, item: T){
     let mut bot = 0;
     let mut top = arr.len() - 1;
@@ -157,12 +159,12 @@ pub fn merge_sort(arr: &[i64]) -> Vec<i64> {
     sorted_arr
 }
 
-fn combine_sorted_vecs_inplace(a: &[i64], b: &[i64], tmp: &mut [i64]) {
+fn combine_sorted_vecs_inplace<T: Copy + Ord>(a: &[T], b: &[T], tmp: &mut [T]) {
     let mut index_a = 0;
     let mut index_b = 0;
     let mut index_c = 0;
     while index_a < a.len() && index_b < b.len() {
-        if a[index_a] < b[index_b] {
+        if a[index_a] <= b[index_b] {
             tmp[index_c] = a[index_a];
             index_c += 1;
             index_a += 1;
@@ -279,10 +281,9 @@ fn merge_sort_bottom_up_with_early_stopping_inplace_wrapper(arr: &[i64]) -> Vec<
     ret
 }
 
-const SHELL_SORT_SIZE: usize = 39;
 pub fn merge_sort_bottom_up_with_early_stopping_inplace(arr: &mut [i64]) {
-    for index in (0..arr.len()).step_by(SHELL_SORT_SIZE){
-        shell_sort_knuth_32_items(&mut arr[index..index+32]);
+    for index in (0..arr.len()).step_by(SMALL_SORT_SIZE){
+        small_sort(&mut arr[index..index + SMALL_SORT_SIZE]);
     }
 
     let mut size = 32;
